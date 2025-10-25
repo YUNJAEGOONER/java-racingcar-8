@@ -5,32 +5,28 @@ import racingcar.domain.Car;
 
 public class OutputView {
 
-    public final static String dStr = "-";
+    private final static String DASH = "-";
 
-    public static void printStartInfo(){
+    public void printStartInfo(){
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분");
     }
 
-    public static void printSetTurnMessage(){
+    public void printSetTurnMessage(){
         System.out.println("시도할 횟수는 몇 회인가요?");
     }
 
-    public static void printGameStatusInit(){
+    public void printGameStatusInit(){
         System.out.print("\n실행 결과");
     }
 
-    public static void printGameStatus(List<Car> cars){
-        cars.forEach(car -> System.out.printf("\n%s : %s", car.getName(), dStr.repeat(car.getDistance())));
+    public void printGameStatus(List<Car> cars){
+        cars.forEach(car -> System.out.printf("\n%s : %s", car.getName(), DASH.repeat(car.getDistance())));
         System.out.print('\n');
     }
 
-    public static void printWinner(List<String> winnerList){
+    public void printWinner(List<String> winnerList){
         String winners = String.join(",", winnerList);
         System.out.printf("\n최종 우승자 : %s", winners);
     }
-
-
-
-
 
 }

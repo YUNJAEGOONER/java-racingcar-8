@@ -5,13 +5,13 @@ import racingcar.exception.ExceptionCode;
 
 public class InputParser {
 
-    public static String[] parsePlayerName(String input){
+    public String[] parsePlayerName(String input){
         String [] parsedInput = input.split(",");
         validatePlayerName(parsedInput);
         return parsedInput;
     }
 
-    public static int parseTurnInput(String input){
+    public int parseTurnInput(String input){
         validateNumber(input);
         try {
             return Integer.parseInt(input);
@@ -20,7 +20,7 @@ public class InputParser {
         }
     }
 
-    private static void validatePlayerName(String[] parsedInput){
+    private void validatePlayerName(String[] parsedInput){
         for (String player : parsedInput) {
             if (player.isBlank() || player.length() >= 6) {
                 throw new IllegalArgumentException(ExceptionCode.PLAYER_NAME_LENGTH_LIMIT);
@@ -29,7 +29,7 @@ public class InputParser {
         validateDuplicateName(parsedInput);
     }
 
-    private static void validateDuplicateName(String [] parsedInput){
+    private void validateDuplicateName(String [] parsedInput){
         List<String> players = List.of(parsedInput);
         if(players.size() != players.stream().distinct().count()){
             throw new IllegalArgumentException(ExceptionCode.PLAYER_NAME_DUPLICATE);

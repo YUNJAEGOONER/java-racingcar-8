@@ -32,7 +32,7 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car car) {
-        return car.distance - this.distance;
+        return car.getDistance() - this.distance;
     }
 
     public void validatePlayerName(String name){

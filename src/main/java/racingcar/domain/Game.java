@@ -1,7 +1,5 @@
 package racingcar.domain;
 
-import static racingcar.view.OutputView.printGameStatus;
-import static racingcar.view.OutputView.printGameStatusInit;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,13 +15,9 @@ public class Game {
         }
     }
 
-    public void playGame(int turn){
-        printGameStatusInit();
-        for(int i = 0 ; i < turn ; i ++ ){
-            for (Car car : carList) {
-                car.drive();
-            }
-            printGameStatus(carList);
+    public void playGame(){
+        for (Car car : carList) {
+            car.drive();
         }
     }
 
@@ -36,4 +30,7 @@ public class Game {
                 .toList();
     }
 
+    public List<Car> getCarList() {
+        return carList;
+    }
 }

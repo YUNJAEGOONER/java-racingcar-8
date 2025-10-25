@@ -1,15 +1,24 @@
 package racingcar.controller;
 
-import static racingcar.view.InputView.*;
-import static racingcar.view.OutputView.*;
-
 import java.util.List;
 import racingcar.domain.Game;
 import racingcar.parser.InputParser;
+import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class GameController {
 
-    private Game game;
+    private final Game game;
+    private final InputView inputView;
+    private final OutputView outputView;
+    private final InputParser inputParser;
+
+    public GameController(InputView inputView, OutputView outputView, InputParser inputParser) {
+        this.game = new Game();
+        this.inputView = inputView;
+        this.outputView = outputView;
+        this.inputParser = inputParser;
+    }
 
     public void play(){
         initGame();
@@ -18,32 +27,34 @@ public class GameController {
     }
 
     public void initGame(){
-        printStartInfo();
+        outputView.printStartInfo();
         String [] players = setPlayers();
-        Game game = new Game();
         game.initPlayer(players);
-        this.game = game;
     }
 
     private String[] setPlayers(){
-        String playerNames = enterPlayerName();
-        return InputParser.parsePlayerName(playerNames);
+        String playerNames = inputView.enterPlayerName();
+        return inputParser.parsePlayerName(playerNames);
     }
 
     private void playGame(){
         int turn = setTurn();
-        game.playGame(turn);
+        outputView.printGameStatusInit();
+        for(int i = 0 ; i < turn ; i ++ ) {
+            game.playGame();
+            outputView.printGameStatus(game.getCarList());
+        }
     }
 
     private int setTurn(){
-        printSetTurnMessage();
-        String turnInput = enterGameTurn();
-        return InputParser.parseTurnInput(turnInput);
+        outputView.printSetTurnMessage();
+        String turnInput = inputView.enterGameTurn();
+        return inputParser.parseTurnInput(turnInput);
     }
 
     private void endGame(){
         List<String> winners = game.rankPlayer();
-        printWinner(winners);
+        outputView.printWinner(winners);
     }
 
 }
