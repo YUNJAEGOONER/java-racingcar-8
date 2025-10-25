@@ -14,5 +14,4 @@ public class InputView {
         return turn;
     }
 
-
 }

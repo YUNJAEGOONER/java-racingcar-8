@@ -9,19 +9,19 @@ import java.util.List;
 
 public class Game {
 
-    private List<Car> carList = new ArrayList<>();
+    private final List<Car> carList = new ArrayList<>();
 
     public void initPlayer(String[] playerNames){
-        for(int i = 0 ; i < playerNames.length ; i ++ ){
-            carList.add(new Car(playerNames[i]));
+        for (String playerName : playerNames) {
+            carList.add(new Car(playerName));
         }
     }
 
     public void playGame(int turn){
         printGameStatusInit();
         for(int i = 0 ; i < turn ; i ++ ){
-            for(int j = 0 ; j <  carList.size() ; j ++ ){
-                carList.get(j).drive();
+            for (Car car : carList) {
+                car.drive();
             }
             printGameStatus(carList);
         }

@@ -1,16 +1,18 @@
 package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.exception.ExceptionCode;
 
 public class Car implements Comparable<Car>{
 
-    private String name;
+    private final String name;
 
     private int distance = 0;
 
     private static final int threshold = 4;
 
     public Car(String name){
+        validatePlayerName(name);
         this.name = name;
     }
 
@@ -31,5 +33,11 @@ public class Car implements Comparable<Car>{
     @Override
     public int compareTo(Car car) {
         return car.distance - this.distance;
+    }
+
+    public void validatePlayerName(String name){
+        if(name.isBlank() || name.length() >= 6){
+            throw new IllegalArgumentException(ExceptionCode.PLAYER_NAME_LENGTH_LIMIT);
+        }
     }
 }

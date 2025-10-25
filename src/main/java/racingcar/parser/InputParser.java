@@ -1,6 +1,7 @@
 package racingcar.parser;
 
 import java.util.List;
+import racingcar.exception.ExceptionCode;
 
 public class InputParser {
 
@@ -15,14 +16,14 @@ public class InputParser {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자 형태를 입력해주세요");
+            throw new IllegalArgumentException(ExceptionCode.INPUT_NUMBER_FORMAT);
         }
     }
 
     private static void validatePlayerName(String[] parsedInput){
         for (String player : parsedInput) {
             if (player.isBlank() || player.length() >= 6) {
-                throw new IllegalArgumentException("플레이어의 이름은 1글자 이상 5글자 이하이어여 합니다.");
+                throw new IllegalArgumentException(ExceptionCode.PLAYER_NAME_LENGTH_LIMIT);
             }
         }
         validateDuplicateName(parsedInput);
@@ -31,13 +32,13 @@ public class InputParser {
     private static void validateDuplicateName(String [] parsedInput){
         List<String> players = List.of(parsedInput);
         if(players.size() != players.stream().distinct().count()){
-            throw new IllegalArgumentException("플레이어의 이름은 중복될 수 없습니다.");
+            throw new IllegalArgumentException(ExceptionCode.PLAYER_NAME_DUPLICATE);
         }
     }
 
     private static void validateNumber(String input){
         if(input.startsWith("0") || (!input.matches("^[0-9]+$"))){
-            throw new IllegalArgumentException("0으로 시작하지 않는 양의 정수를 입력해 주세요");
+            throw new IllegalArgumentException(ExceptionCode.INPUT_NUMBER_FORMAT);
         }
     }
 
