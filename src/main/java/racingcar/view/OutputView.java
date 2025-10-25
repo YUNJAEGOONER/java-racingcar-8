@@ -1,7 +1,6 @@
-package racingcar.View;
+package racingcar.view;
 
 import java.util.List;
-import org.junit.platform.commons.util.StringUtils;
 import racingcar.domain.Car;
 
 public class OutputView {
@@ -17,16 +16,17 @@ public class OutputView {
     }
 
     public static void printGameStatusInit(){
-        System.out.println("실행 결과");
+        System.out.print("\n실행 결과");
     }
 
     public static void printGameStatus(List<Car> cars){
-        cars.forEach(car -> System.out.printf("%s : %s", car.getName(), dStr.repeat(car.getDistance())));
+        cars.forEach(car -> System.out.printf("\n%s : %s", car.getName(), dStr.repeat(car.getDistance())));
+        System.out.print('\n');
     }
 
     public static void printWinner(List<String> winnerList){
         String winners = String.join(",", winnerList);
-        System.out.printf("최종 우승자 : %s", winners);
+        System.out.printf("\n최종 우승자 : %s", winners);
     }
 
 

@@ -1,17 +1,18 @@
-package racingcar.View;
+package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
 
     public static String enterPlayerName(){
-        String player = Console.readLine();
-        return player;
+        return Console.readLine();
     }
 
-    public static void enterGameTurn(){
+    public static String enterGameTurn(){
         String turn = Console.readLine();
         Console.close();
+        return turn;
     }
+
 
 }

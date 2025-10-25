@@ -2,13 +2,13 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class Car {
+public class Car implements Comparable<Car>{
 
     private String name;
 
     private int distance = 0;
 
-    private static int threshold = 4;
+    private static final int threshold = 4;
 
     public Car(String name){
         this.name = name;
@@ -28,4 +28,8 @@ public class Car {
         }
     }
 
+    @Override
+    public int compareTo(Car car) {
+        return car.distance - this.distance;
+    }
 }
