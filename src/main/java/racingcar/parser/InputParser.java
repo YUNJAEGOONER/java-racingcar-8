@@ -41,6 +41,9 @@ public class InputParser {
         if(input.isBlank()){
             throw new IllegalArgumentException(ExceptionCode.INPUT_TURN_NOT_BLANK);
         }
+        if(input.equals("0")){
+            throw new IllegalArgumentException(ExceptionCode.INPUT_TURN_NUMBER_POSITIVE);
+        }
         if(input.startsWith("0")){
             throw new IllegalArgumentException(ExceptionCode.INPUT_TURN_NUMBER_FORMAT);
         }
