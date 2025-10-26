@@ -21,11 +21,11 @@ public class OutputView {
 
     public void printGameStatus(List<Car> cars){
         cars.forEach(car -> System.out.printf("\n%s : %s", car.getName(), DASH.repeat(car.getDistance())));
-        System.out.print('\n');
+        System.out.println();
     }
 
     public void printWinner(List<String> winnerList){
-        String winners = String.join(",", winnerList);
+        String winners = String.join(", ", winnerList);
         System.out.printf("\n최종 우승자 : %s", winners);
     }
 

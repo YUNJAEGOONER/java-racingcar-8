@@ -30,7 +30,7 @@ public class Car implements Comparable<Car>{
         return car.getDistance() - this.distance;
     }
 
-    public void validatePlayerName(String name){
+    private void validatePlayerName(String name){
         if(name.isBlank() || name.length() >= 6){
             throw new IllegalArgumentException(ExceptionCode.PLAYER_NAME_LENGTH_LIMIT);
         }
