@@ -15,8 +15,9 @@ public class InputParser {
         validateNumber(input);
         try {
             return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ExceptionCode.INPUT_NUMBER_FORMAT);
+        }
+        catch (NumberFormatException e){
+            throw new IllegalArgumentException(ExceptionCode.INPUT_TURN_ONLY_INTEGER);
         }
     }
 
@@ -37,8 +38,14 @@ public class InputParser {
     }
 
     private static void validateNumber(String input){
-        if(input.startsWith("0") || (!input.matches("^[0-9]+$"))){
-            throw new IllegalArgumentException(ExceptionCode.INPUT_NUMBER_FORMAT);
+        if(input.isBlank()){
+            throw new IllegalArgumentException(ExceptionCode.INPUT_TURN_NOT_BLANK);
+        }
+        if(input.startsWith("0")){
+            throw new IllegalArgumentException(ExceptionCode.INPUT_TURN_NUMBER_FORMAT);
+        }
+        if ((!input.matches("^[0-9]+$"))){
+            throw new IllegalArgumentException(ExceptionCode.INPUT_TURN_ONLY_NUMBER);
         }
     }
 
