@@ -65,19 +65,18 @@ class GameTest {
     @DisplayName("플레이어의 순위 매기기 - 단독 우승에서 우승자 가져오기")
     void rankPlayer() {
         //given
-        List <Car> carList = game.getCarList();
+        game.initPlayer(new String[]{"jason", "ian"});
 
-        Car car1 = new Car("jason");
+        List<Car> carList = game.getCarList();
+        Car car1 = carList.get(0);
         for(int i  = 0 ; i < 5 ; i ++ ){
             car1.drive();
         }
 
-        Car car2 = new Car("ian");
+        Car car2 = carList.get(1);
         for(int i  = 0 ; i < 10 ; i ++ ){
             car2.drive();
         }
-        carList.add(car1);
-        carList.add(car2);
 
         //when
         List<String> players = game.rankPlayer();
@@ -93,19 +92,18 @@ class GameTest {
     @DisplayName("플레이어의 순위 매기기 - 공동 우승자가 존재하는 경우")
     void rankPlayerMultipleWinner() {
         //given
-        List <Car> carList = game.getCarList();
+        game.initPlayer(new String[]{"jason", "ian"});
 
-        Car car1 = new Car("jason");
+        List<Car> carList = game.getCarList();
+        Car car1 = carList.get(0);
         for(int i  = 0 ; i < 10 ; i ++ ){
             car1.drive();
         }
 
-        Car car2 = new Car("ian");
+        Car car2 = carList.get(1);
         for(int i  = 0 ; i < 10 ; i ++ ){
             car2.drive();
         }
-        carList.add(car1);
-        carList.add(car2);
 
         //when
         List<String> players = game.rankPlayer();
