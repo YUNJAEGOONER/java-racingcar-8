@@ -11,6 +11,7 @@ public class Application {
         InputView inputView = new InputView();
         OutputView outputView = new OutputView();
         InputParser inputParser = new InputParser();
+
         GameController gameController = new GameController(inputView, outputView, inputParser);
         gameController.play();
     }

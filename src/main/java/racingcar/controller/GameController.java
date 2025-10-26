@@ -26,7 +26,7 @@ public class GameController {
         endGame();
     }
 
-    public void initGame(){
+    private void initGame(){
         outputView.printStartInfo();
         String [] players = setPlayers();
         game.initPlayer(players);

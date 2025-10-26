@@ -1,13 +1,13 @@
 package racingcar.domain;
 
-
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import racingcar.util.RandomNumberGenerator;
 
 public class Game {
 
+    private final RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
     private final List<Car> carList = new ArrayList<>();
     private static final int threshold = 4;
 
@@ -19,7 +19,7 @@ public class Game {
 
     public void playGame(){
         for (Car car : carList) {
-            int randomNum = Randoms.pickNumberInRange(0, 9);
+            int randomNum = randomNumberGenerator.generateRandomNumber();
             if(randomNum >= threshold){
                 car.drive();
             }
