@@ -1,6 +1,7 @@
 package racingcar.domain;
 
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
 public class Game {
 
     private final List<Car> carList = new ArrayList<>();
+    private static final int threshold = 4;
 
     public void initPlayer(String[] playerNames){
         for (String playerName : playerNames) {
@@ -17,7 +19,10 @@ public class Game {
 
     public void playGame(){
         for (Car car : carList) {
-            car.drive();
+            int randomNum = Randoms.pickNumberInRange(0, 9);
+            if(randomNum >= threshold){
+                car.drive();
+            }
         }
     }
 

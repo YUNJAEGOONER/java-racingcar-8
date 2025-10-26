@@ -111,4 +111,19 @@ class InputParserTest {
         assertThat(e.getMessage()).isEqualTo(ExceptionCode.INPUT_TURN_ONLY_INTEGER);
     }
 
+
+    @Test
+    @DisplayName("중복된 이름이 존재하는 경우 예외가 발생")
+    void parsePlayerNameDuplicateFail() {
+        //given
+        String input = "ian,jason,mark,tim,jason";
+
+        //when - then
+        IllegalArgumentException e = assertThrows(
+                IllegalArgumentException.class,
+                () -> inputParser.parsePlayerName(input)
+        );
+
+        assertThat(e.getMessage()).isEqualTo(ExceptionCode.PLAYER_NAME_DUPLICATE);
+    }
 }
