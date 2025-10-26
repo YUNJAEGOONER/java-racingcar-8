@@ -36,6 +36,6 @@ public class Game {
     }
 
     public List<Car> getCarList() {
-        return carList;
+        return List.copyOf(carList);
     }
 }
